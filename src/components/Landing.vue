@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
   <div class="Landing">
     <img id="logo" src="../assets/icon.svg" />
@@ -5,7 +6,7 @@
     <p id="mediumlight">Connect using the following code</p>
     <div class="code-container">
       <img id="link-logo" src="../assets/icons/link.svg" />
-      <p id="code">    
+      <p id='code'>
         {{ chatroomId }}
       </p>
     </div>
@@ -17,8 +18,9 @@ export default {
   props: ['playersConnected', 'chatroomId'],
   watch: {
     playersConnected: function (n, o) {
-      if (n !== 0)
-      this.$emit('LAUNCH_DASHBOARD')
+      if (n !== 0) {
+        this.$emit('LAUNCH_DASHBOARD')
+      }
     }
   }
 }

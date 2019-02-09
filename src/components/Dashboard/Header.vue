@@ -1,17 +1,18 @@
+/* eslint-disable */
 <template>
   <div class="header">
     <img id="logo" src="../../assets/icon.svg" />
     <div class="container">
         <div class="code-container">
           <img id="link-logo" src="../../assets/icons/link.svg" />
-          <p id="code">    
+          <p id="code">
             {{chatroomId}}
           </p>
         </div>
         <div class="code-container" @click="toggleFullScreen()">
           <img id="link-logo" src="../../assets/icons/fullscreen.svg" />
         </div>
-    </div>  
+    </div>
   </div>
 </template>
 
@@ -22,30 +23,29 @@ export default {
     test () {
       console.log('test')
     },
-    toggleFullScreen() {
-      if ((document.fullScreenElement && document.fullScreenElement !== null) ||    
+    toggleFullScreen () {
+      if ((document.fullScreenElement && document.fullScreenElement !== null) ||
       (!document.mozFullScreen && !document.webkitIsFullScreen)) {
-        if (document.documentElement.requestFullScreen) {  
-          document.documentElement.requestFullScreen();  
-        } else if (document.documentElement.mozRequestFullScreen) {  
-          document.documentElement.mozRequestFullScreen();  
-        } else if (document.documentElement.webkitRequestFullScreen) {  
-          document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);  
-        }  
-      } else {  
-        if (document.cancelFullScreen) {  
-          document.cancelFullScreen();  
-        } else if (document.mozCancelFullScreen) {  
-          document.mozCancelFullScreen();  
-        } else if (document.webkitCancelFullScreen) {  
-          document.webkitCancelFullScreen();  
-        }  
-      }  
+        if (document.documentElement.requestFullScreen) {
+          document.documentElement.requestFullScreen()
+        } else if (document.documentElement.mozRequestFullScreen) {
+          document.documentElement.mozRequestFullScreen()
+        } else if (document.documentElement.webkitRequestFullScreen) {
+          document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT)
+        }
+      } else {
+        if (document.cancelFullScreen) {
+          document.cancelFullScreen()
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen()
+        } else if (document.webkitCancelFullScreen) {
+          document.webkitCancelFullScreen()
+        }
+      }
     }
   }
 }
 </script>
-
 
 <style scoped>
 .header {
@@ -91,4 +91,3 @@ export default {
   margin-left: .5em;
 }
 </style>
-

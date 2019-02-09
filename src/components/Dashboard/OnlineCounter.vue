@@ -1,10 +1,11 @@
+/* eslint-disable */
 <template>
   <div class="online-counter">
-    <p id="players-online">Players Online</p>
+    <!-- <p id="players-online">Players Online</p> -->
     <div class="player-base">
       <Player  v-for="player in users" :key="users.indexOf(player)" :name="player"/>
     </div>
-  </div>  
+  </div>
 </template>
 
 <script>

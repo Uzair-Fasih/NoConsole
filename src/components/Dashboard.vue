@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
   <div class="dashboard">
     <NoConsoleHeader :chatroomId="chatroomId"/>
@@ -19,13 +20,14 @@ export default {
   props: ['playersConnected', 'chatroomId', 'users'],
   watch: {
     playersConnected: function (n, o) {
-      if (n === 0)
+      if (n === 0) {
         this.$emit('LAUNCH_LANDING')
+      }
     }
   }
 }
 </script>
-  
+
 <style scoped>
 .dashboard {
   display: flex;

@@ -1,7 +1,7 @@
 <template>
   <div class="player" :style="{ backgroundColor: randomColor() }">
     <p class="player-initials">{{ getInititals(name) }}</p>
-  </div>  
+  </div>
 </template>
 
 <script>
@@ -9,7 +9,7 @@ export default {
   props: ['name'],
   methods: {
     randomColor () {
-      return "#000000".replace(/0/g,function(){return (~~(Math.random()*16)).toString(16)})
+      return '#000000'.replace(/0/g, function () { return (~~(Math.random() * 16)).toString(16) })
     },
     getInititals (name) {
       let initials = name.match(/\b\w/g) || []
@@ -39,4 +39,3 @@ export default {
   color: #FFF;
 }
 </style>
-

@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
   <div class="game" :style="{ backgroundImage: 'url(\'' + gameinfo.thumbnail + '\')' }" :class="{ selected: (selected === (index + 1)) }">
     <div class="container">

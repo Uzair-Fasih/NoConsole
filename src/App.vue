@@ -8,7 +8,7 @@
 <script>
 import Dashboard from './components/Dashboard'
 import Landing from './components/Landing'
-import io from 'socket.io-client';
+import io from 'socket.io-client'
 
 export default {
   name: 'App',
@@ -21,7 +21,7 @@ export default {
       showDashboard: true,
       playersConnected: 0,
       users: [],
-      chatroomId: 'fetching'
+      chatroomId: 'FETCHING'
     }
   },
   methods: {
@@ -29,23 +29,37 @@ export default {
       this.showDashboard = !this.showDashboard
     },
     emulateKeyPress (keyCode) {
-      document.dispatchEvent(new KeyboardEvent('keydown',{ keyCode }));
+      document.dispatchEvent(new KeyboardEvent('keydown', { keyCode }))
     }
   },
   mounted () {
-    this.chatroomId = '233415'
-    const socket = io('http://192.168.43.80:7777')
+    const socket = io('http://192.168.1.4:7777')
     const vm = this
+    const urlString = window.location.href
     socket.on('connect', function () {
-      socket.emit('startup', { data: { user: 'screen', chatroomId: vm.chatroomId }});
+      console.log('Connecting to NoServer')
+      if (urlString.split('=')[1]) {
+        socket.emit('CONSOLE_REDIRECT', { sessionId: urlString.split('=')[1] })
+        vm.chatroomId = urlString.split('=')[1]
+      } else {
+        socket.emit('CONSOLE_START_UP')
+      }
     })
-    socket.on('message', function (res) {
-      vm.playersConnected = res.data.playersConnected
-      vm.users = res.data.users
+
+    socket.on('SET_SESSION_ID', function (res) {
+      vm.chatroomId = res.data.sessionsId
     })
-    socket.on('control', function (res) {
+
+    socket.on('STATUS_INFO', function (res) {
+      vm.playersConnected = res.playerCount
       console.log(res)
-      vm.emulateKeyPress(res.keyCode)
+    })
+
+    socket.on('CONTROL_INFO', function (res) {
+      console.log(res)
+      if (res.controllerId === 1) {
+        vm.emulateKeyPress(res.keyCode)
+      }
     })
   }
 }
