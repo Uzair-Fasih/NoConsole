@@ -19,22 +19,26 @@ export default {
         {
           title: '2048',
           thumbnail: 'https://lh3.googleusercontent.com/jK3nAwOD4DwFkG4NY_c8Q3Bkc0q_mNoo8g_OCZqoYuwIBrAIrdvObcgkrz41t-XigCg=w300-rw',
-          maxPlayers: 1
+          maxPlayers: 1,
+          layout: 2
         },
         {
           title: 'Pacman',
           thumbnail: 'http://images6.fanpop.com/image/photos/39000000/Pac-Man-pac-man-39056094-1600-900.jpg',
-          maxPlayers: 1
+          maxPlayers: 1,
+          layout: 2
         },
         {
           title: 'Astray',
           thumbnail: 'https://superdevresources.com/wp-content/uploads/2014/09/astray-webgl-maze-game-open-source.jpg',
-          maxPlayers: 1
+          maxPlayers: 1,
+          layout: 2
         },
         {
           title: 'MortalKombat',
           thumbnail: 'https://superdevresources.com/wp-content/uploads/2014/09/mk-open-source-game.jpg',
-          maxPlayers: 2
+          maxPlayers: 2,
+          layout: 3
         },
         // {
         //   title: 'Hextris',
@@ -56,7 +60,7 @@ export default {
       }
     },
     playGame () {
-      window.location.href = `http://192.168.1.4:7777/Game/${this.games[this.selected - 1].title}/${this.chatroomId}`
+      window.location.href = `http://192.168.43.80:7777/Game/${this.games[this.selected - 1].title}/${this.chatroomId}/${this.games[this.selected - 1].layout}`
     },
     emulateKeyPress (keyCode) {
       document.dispatchEvent(new KeyboardEvent('keydown', { keyCode }))

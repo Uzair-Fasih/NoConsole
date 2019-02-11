@@ -33,14 +33,14 @@ export default {
     }
   },
   mounted () {
-    const socket = io('http://192.168.1.4:7777')
+    const socket = io('http://192.168.43.80:7777')
     const vm = this
     const urlString = window.location.href
     socket.on('connect', function () {
       console.log('Connecting to NoServer')
       if (urlString.split('=')[1]) {
-        socket.emit('CONSOLE_REDIRECT', { sessionId: urlString.split('=')[1] })
-        vm.chatroomId = urlString.split('=')[1]
+        socket.emit('CONSOLE_REDIRECT', { sessionId: (urlString.split('=')[1]).split('&')[0], layout: 2 })
+        vm.chatroomId = (urlString.split('=')[1]).split('&')[0]
       } else {
         socket.emit('CONSOLE_START_UP')
       }
@@ -57,9 +57,7 @@ export default {
 
     socket.on('CONTROL_INFO', function (res) {
       console.log(res)
-      if (res.controllerId === 1) {
-        vm.emulateKeyPress(res.keyCode)
-      }
+      vm.emulateKeyPress(res.keyCode)
     })
   }
 }
