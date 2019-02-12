@@ -33,9 +33,9 @@ export default {
     }
   },
   mounted () {
-    const socket = io('http://192.168.43.80:7777')
     const vm = this
     const urlString = window.location.href
+    const socket = io(urlString.split('7777')[0] + '7777')
     socket.on('connect', function () {
       console.log('Connecting to NoServer')
       if (urlString.split('=')[1]) {

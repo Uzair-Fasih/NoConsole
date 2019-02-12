@@ -60,7 +60,8 @@ export default {
       }
     },
     playGame () {
-      window.location.href = `http://192.168.43.80:7777/Game/${this.games[this.selected - 1].title}/${this.chatroomId}/${this.games[this.selected - 1].layout}`
+      const urlString = window.location.href
+      window.location.href = `${urlString.split('7777')[0]}7777/Game/${this.games[this.selected - 1].title}/${this.chatroomId}/${this.games[this.selected - 1].layout}`
     },
     emulateKeyPress (keyCode) {
       document.dispatchEvent(new KeyboardEvent('keydown', { keyCode }))
